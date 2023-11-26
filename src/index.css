@@ -95,6 +95,9 @@ article{
     padding: 10px;
     border-bottom: 1px solid gray;
 }
+.postpage{
+    flex-grow: 1;
+}
 .postpage article{
     border-bottom: 0;
 }
@@ -120,6 +123,7 @@ article .article_link:hover{
 }.newpost{
     width: 100%;
     padding: 10px;
+    flex-grow: 1;
 }
 .newpost .newpost-form{
     width: 97%;
@@ -159,4 +163,9 @@ article .article_link:hover{
 }
 .newpost .newpost-form button:hover{
     opacity: 0.6;
+}
+.missing, .about{
+    width: 97%;
+    padding: 10px;
+    flex-grow: 1;
 }

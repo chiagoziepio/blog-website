@@ -1,8 +1,11 @@
 
 
 const Footer = () => {
+  const year = new Date();
   return (
-    <footer>Footer</footer>
+    <footer>
+      <p>Pio &copy; : {year.getFullYear()}</p>
+    </footer>
   )
 }
 

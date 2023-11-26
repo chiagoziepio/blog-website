@@ -1,8 +1,16 @@
-
+import { Link } from "react-router-dom"
 
 const Missing = () => {
   return (
-    <div>Missing</div>
+    <div className="missing">
+        <h2>page might not exist</h2>
+        <p>Reload to confirm</p>
+       <p>
+        <Link to = '/'>return to our homepage</Link>
+       </p>
+
+
+    </div>
   )
 }
 

@@ -12,7 +12,7 @@ const Home = ({posts}) => {
       <p style={{
         color:"black",
         fontSize:"40PX",
-        marginLeft:"50%",
+        marginLeft:"40%",
         marginTop:"150px"
       }}>No post to display</p>
       )}

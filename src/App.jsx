@@ -37,10 +37,12 @@ function App() {
   const [search, setSearch] = useState("")
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+  const [searchOutcome, setSearchOutcome] = useState([]);
 
   useEffect(()=>{
-
-  },[posts])
+    const searchResult= posts.filter(post=>((post.body).toLocaleLowerCase()).includes(search.toLocaleLowerCase()) ||((post.title).toLocaleLowerCase()).includes(search.toLocaleLowerCase())  )
+    setSearchOutcome(searchResult.reverse())
+  },[posts, search])
   const navigate = useNavigate();
 
   const handleDelete = (id)=>{
@@ -66,7 +68,7 @@ function App() {
         setSearch={setSearch}
       />} >
         <Route index element = {<Home 
-          posts={posts}
+          posts={searchOutcome}
         />}/>
         <Route path='post'>
           <Route index element= {<Newpost 
