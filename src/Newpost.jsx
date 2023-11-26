@@ -19,7 +19,7 @@ const Newpost = ({postTitle,setPostTitle, postBody, setPostBody, handleSubmit}) 
           onChange={(e)=> setPostBody(e.target.value)}
           placeholder="write your post"
           ></textarea>
-          <button type="submit" onClick={()=>handleSubmit(e)}>Submit</button>
+          <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   )

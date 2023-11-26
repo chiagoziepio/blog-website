@@ -46,13 +46,18 @@ function App() {
   const handleDelete = (id)=>{
     const Delpost = posts.filter(post => post.id !== id);
     setPosts(Delpost);
-    navigate.push("/");
+    navigate("/");
   }
   const handleSubmit = (e)=>{
     e.preventDefault()
     const id = posts.length ? posts[posts.length - 1].id + 1: 1;
-    const datetime = '';
-    const newpostlist = {id , }
+    const datetime = '25th November 2023: 11:15am';
+    const newpost = {id ,datetime, title: postTitle, body:postBody }
+    const newPostlist = [...posts,newpost]
+    setPosts(newPostlist);
+    setPostBody("")
+    setPostTitle("")
+    navigate("/")
   }
   return (
     < Routes>
