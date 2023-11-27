@@ -1,0 +1,32 @@
+{
+    "posts":[
+            { 
+                "id":1,
+                " title":"1st post",
+                "datetime": "29th October 2023, Sunday 11:20",
+                " body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
+            
+        },
+        {
+                "id":2,
+                " title":"2nd post",
+                "datetime": "28th October 2023, Sunday 11:20",
+                " body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
+            
+        },
+        {
+            "id":3,
+        " title":"3rd post",
+            "datetime": "30th October 2023, Sunday 11:20",
+        " body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
+            
+        },
+        {
+            "id":4,
+        " title":"4th post",
+            "datetime": "29th October 2023, Sunday 11:20",
+        " body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
+            
+        }
+]
+}

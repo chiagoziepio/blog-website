@@ -6,44 +6,46 @@ import PostPage from './PostPage';
 import Missing from './Missing';
 import Layout from './Layout';
 import {Routes,Route, useNavigate} from 'react-router-dom'
+import api from './api/posts'
+import {format} from 'date-fns'
+
+
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id:1,
-      title:"1st post",
-      datetime: "29th October 2023, Sunday 11:20",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
-      
-    },
-    {id:2,
-      title:"2nd post",
-      datetime: "28th October 2023, Sunday 11:20",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
-      
-    },
-    {id:3,
-      title:"3rd post",
-      datetime: "30th October 2023, Sunday 11:20",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
-      
-    },
-    {id:4,
-      title:"4th post",
-      datetime: "29th October 2023, Sunday 11:20",
-      body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nisi aut, eum vel commodi ab, molestias sapiente deserunt fugiat qui corporis voluptatem excepturi illo, expedita possimus sint distinctio eaque quas. Harum laboriosam repudiandae facilis eveniet nam sapiente odio, officia excepturi!"
-      
-    }
-  ])
+  const [posts, setPosts] = useState([])
   const [search, setSearch] = useState("")
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
   const [searchOutcome, setSearchOutcome] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(()=>{
-    const searchResult= posts.filter(post=>((post.body).toLocaleLowerCase()).includes(search.toLocaleLowerCase()) ||((post.title).toLocaleLowerCase()).includes(search.toLocaleLowerCase())  )
+    const fetechPosts = async ()=>{
+     try{
+      const response = await api.get('/posts');
+     
+      if(response && response.data) setPosts(response.data)
+     }catch(err){
+      if(err.response){
+          console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.header);
+      }else{
+        console.log(`Error:${err.message}`);
+      }
+      
+     }
+
+    }
+    fetechPosts();
+  },[])
+
+  useEffect(()=>{
+    const searchResult= posts.filter(post=>((post.body).toLowerCase()).includes(search.toLowerCase()) ||((post.title).toLowerCase()).includes(search.toLowerCase())  )
     setSearchOutcome(searchResult.reverse())
   },[posts, search])
-  const navigate = useNavigate();
+
+ 
 
   const handleDelete = (id)=>{
     const Delpost = posts.filter(post => post.id !== id);
@@ -53,8 +55,8 @@ function App() {
   const handleSubmit = (e)=>{
     e.preventDefault()
     const id = posts.length ? posts[posts.length - 1].id + 1: 1;
-    const datetime = '25th November 2023: 11:15am';
-    const newpost = {id ,datetime, title: postTitle, body:postBody }
+    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+    const newpost = {id , title: postTitle,datetime, body:postBody }
     const newPostlist = [...posts,newpost]
     setPosts(newPostlist);
     setPostBody("")
